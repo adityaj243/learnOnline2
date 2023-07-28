@@ -18,7 +18,7 @@ function UpdateCourseCard(props) {
   async function removeVideo() {
     try {
       const url =
-        "http://localhost:8000/update/delete/video/" +
+        "/update/delete/video/" +
         props.userName +
         "/" +
         props.corrName +

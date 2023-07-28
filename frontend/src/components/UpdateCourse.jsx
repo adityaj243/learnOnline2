@@ -14,7 +14,7 @@ function UpdateCourse() {
     username: username,
     coursename: coursename,
   };
-  const url = "http://localhost:8000/update/" + username + "/" + coursename;
+  const url = "/update/" + username + "/" + coursename;
 
   const [videoList, setVideoList] = useState([]);
 
@@ -23,15 +23,11 @@ function UpdateCourse() {
       urlUsername: username,
     };
     try {
-      const response = await axios.post(
-        "http://localhost:8000/islogged",
-        logginObj,
-        {
-          headers: {
-            "x-access-token": localStorage.getItem("token"),
-          },
-        }
-      );
+      const response = await axios.post("/islogged", logginObj, {
+        headers: {
+          "x-access-token": localStorage.getItem("token"),
+        },
+      });
       if (!response.data.auth) {
         history.push("/");
       }

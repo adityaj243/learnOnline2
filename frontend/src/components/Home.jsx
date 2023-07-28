@@ -8,7 +8,7 @@ import Navbar from "./Navbar";
 function Home() {
   const history = useHistory();
   const username = localStorage.getItem("username");
-  const url = "http://localhost:8000/home/" + username;
+  const url = "/home/" + username;
   const [courses, setCourses] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   async function isLogged() {
@@ -16,15 +16,11 @@ function Home() {
       urlUsername: username,
     };
     try {
-      const response = await axios.post(
-        "http://localhost:8000/islogged",
-        logginObj,
-        {
-          headers: {
-            "x-access-token": localStorage.getItem("token"),
-          },
-        }
-      );
+      const response = await axios.post("/islogged", logginObj, {
+        headers: {
+          "x-access-token": localStorage.getItem("token"),
+        },
+      });
       if (!response.data.auth) {
         history.push("/");
       }

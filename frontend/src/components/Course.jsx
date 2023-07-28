@@ -20,13 +20,8 @@ function Course() {
     foundername: foundername,
   };
   const url =
-    "http://localhost:8000/course/" +
-    username +
-    "/" +
-    coursename +
-    "/founder/" +
-    foundername; //"/course/:username/:crname/founder/:founderName"
-  // const url = "http://localhost:8000" + path;     //"/course/:username/:crname/founder/:founderName"
+    "/course/" + username + "/" + coursename + "/founder/" + foundername; //"/course/:username/:crname/founder/:founderName"
+  // const url = "" + path;     //"/course/:username/:crname/founder/:founderName"
 
   //-------------function to get username--------------
   // function getUsername(path) {
@@ -50,15 +45,11 @@ function Course() {
       urlUsername: username,
     };
     try {
-      const response = await axios.post(
-        "http://localhost:8000/islogged",
-        logginObj,
-        {
-          headers: {
-            "x-access-token": localStorage.getItem("token"),
-          },
-        }
-      );
+      const response = await axios.post("/islogged", logginObj, {
+        headers: {
+          "x-access-token": localStorage.getItem("token"),
+        },
+      });
       if (!response.data.auth) {
         history.push("/");
       }
@@ -101,12 +92,7 @@ function Course() {
 
   async function addLike() {
     const likeURL =
-      "http://localhost:8000/like/" +
-      username +
-      "/" +
-      coursename +
-      "/founder/" +
-      foundername;
+      "/like/" + username + "/" + coursename + "/founder/" + foundername;
     try {
       setLikeStatus(true);
       const response = await axios.post(likeURL, backObj);
@@ -118,12 +104,7 @@ function Course() {
 
   async function unLike() {
     const unlikeURL =
-      "http://localhost:8000/unlike/" +
-      username +
-      "/" +
-      coursename +
-      "/founder/" +
-      foundername;
+      "/unlike/" + username + "/" + coursename + "/founder/" + foundername;
     try {
       setLikeStatus(false);
       const response = await axios.post(unlikeURL, backObj);
@@ -253,13 +234,13 @@ export default Course;
 //     foundername: foundername,
 //   };
 //   const url =
-//     "http://localhost:8000/course/" +
+//     "/course/" +
 //     username +
 //     "/" +
 //     coursename +
 //     "/founder/" +
 //     foundername; //"/course/:username/:crname/founder/:founderName"
-//   // const url = "http://localhost:8000" + path;     //"/course/:username/:crname/founder/:founderName"
+//   // const url = "" + path;     //"/course/:username/:crname/founder/:founderName"
 
 //   //-------------function to get username--------------
 //   // function getUsername(path) {
@@ -279,7 +260,7 @@ export default Course;
 //     };
 //     try {
 //       const response = await axios.post(
-//         "http://localhost:8000/islogged",
+//         "/islogged",
 //         logginObj,
 //         {
 //           headers: {
@@ -329,7 +310,7 @@ export default Course;
 
 //   async function addLike() {
 //     const likeURL =
-//       "http://localhost:8000/like/" +
+//       "/like/" +
 //       username +
 //       "/" +
 //       coursename +
@@ -346,7 +327,7 @@ export default Course;
 
 //   async function unLike() {
 //     const unlikeURL =
-//       "http://localhost:8000/unlike/" +
+//       "/unlike/" +
 //       username +
 //       "/" +
 //       coursename +

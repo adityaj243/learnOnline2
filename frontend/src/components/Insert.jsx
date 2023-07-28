@@ -17,15 +17,11 @@ function Insert() {
       urlUsername: username,
     };
     try {
-      const response = await axios.post(
-        "http://localhost:8000/islogged",
-        logginObj,
-        {
-          headers: {
-            "x-access-token": localStorage.getItem("token"),
-          },
-        }
-      );
+      const response = await axios.post("/islogged", logginObj, {
+        headers: {
+          "x-access-token": localStorage.getItem("token"),
+        },
+      });
       if (!response.data.auth) {
         history.push("/");
       }
@@ -126,10 +122,7 @@ function Insert() {
       };
       console.log("obj1:");
       console.log(obj1);
-      const resp = await axios.post(
-        "http://localhost:8000/insert/" + username,
-        obj1
-      );
+      const resp = await axios.post("/insert/" + username, obj1);
     }
 
     launch();
@@ -163,10 +156,9 @@ function Insert() {
       const pubidtemp = pubId[index];
       console.log("ye id index wali jgh:", pubidtemp);
       console.log("front pubid: ", pubidtemp);
-      const resp = await axios.post(
-        "http://localhost:8000/deleteCloudinaryVideo",
-        { pub: pubidtemp }
-      );
+      const resp = await axios.post("/deleteCloudinaryVideo", {
+        pub: pubidtemp,
+      });
       alert(resp.data);
     } catch (err) {
       console.log(err);

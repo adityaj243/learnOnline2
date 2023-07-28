@@ -31,28 +31,24 @@ function Play() {
       urlUsername: username,
     };
     try {
-      const response = await axios.post(
-        "http://localhost:8000/islogged",
-        logginObj,
-        {
-          headers: {
-            "x-access-token": localStorage.getItem("token"),
-          },
-        }
-      );
+      const response = await axios.post("/islogged", logginObj, {
+        headers: {
+          "x-access-token": localStorage.getItem("token"),
+        },
+      });
       if (!response.data.auth) {
         history.push("/");
       }
     } catch (err) {
       console.log(err);
-    } 
+    }
   }
 
   //------------------------------------FUNCTION TO GET SCREENSHOTS FROM DATABASE----------------------------------------
 
   async function getScreenshots() {
     const url =
-      "http://localhost:8000/image/get/" +
+      "/image/get/" +
       username +
       "/" +
       courseName +
@@ -78,7 +74,7 @@ function Play() {
 
   const getUser = async function () {
     const url =
-      "http://localhost:8000/course/" +
+      "/course/" +
       username +
       "/" +
       courseName +
@@ -86,7 +82,7 @@ function Play() {
       videoName +
       "/founder/" +
       founderName;
-    // const url = "http://localhost:8000" + location.pathname;
+    // const url = "" + location.pathname;
     console.log("play:");
     console.log(url);
     const response = await axios.post(url, backObj);
@@ -108,7 +104,7 @@ function Play() {
   async function deleteScreenshot(pubid) {
     // /delete/screenshot/:username/:crname/founder/:foundername
     const deleteSSurl =
-      "http://localhost:8000/delete/screenshot/" +
+      "/delete/screenshot/" +
       username +
       "/" +
       courseName +
@@ -159,7 +155,7 @@ function Play() {
             //   }
             // }}
             src={single.link}
-            // src={"http://localhost:8000/" + single}
+            // src={"/" + single}
             alt="test"
             height="500px"
             width="auto"
@@ -190,7 +186,7 @@ function Play() {
       const pubid = res.data.public_id;
       console.log("sslink: ", sslink);
       const url2 =
-        "http://localhost:8000/image/upload/" +
+        "/image/upload/" +
         username +
         "/" +
         courseName +

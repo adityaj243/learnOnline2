@@ -24,15 +24,11 @@ function MyContentNotes() {
       urlUsername: userName,
     };
     try {
-      const response = await axios.post(
-        "http://localhost:8000/islogged",
-        logginObj,
-        {
-          headers: {
-            "x-access-token": localStorage.getItem("token"),
-          },
-        }
-      );
+      const response = await axios.post("/islogged", logginObj, {
+        headers: {
+          "x-access-token": localStorage.getItem("token"),
+        },
+      });
       if (!response.data.auth) {
         history.push("/");
       }
@@ -44,12 +40,7 @@ function MyContentNotes() {
   async function getNoteContent() {
     // "/get/notes/:username/:crname/:vidname"
     const url =
-      "http://localhost:8000/mycontent/notes/" +
-      userName +
-      "/" +
-      crname +
-      "/" +
-      foundername;
+      "/mycontent/notes/" + userName + "/" + crname + "/" + foundername;
     const response = await axios.post(url, backObj);
     try {
       console.log("frontend Note get:");
@@ -78,13 +69,7 @@ function MyContentNotes() {
       foundername: foundername,
       content: content,
     };
-    const url =
-      "http://localhost:8000/save/notes/" +
-      userName +
-      "/" +
-      crname +
-      "/" +
-      foundername;
+    const url = "/save/notes/" + userName + "/" + crname + "/" + foundername;
     console.log("mY CONTENT notes URL:");
     console.log(
       //"/save/notes/:username/:crname/:vidname"

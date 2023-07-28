@@ -12,7 +12,7 @@ function Note(props) {
   async function getNoteContent() {
     // "/get/notes/:username/:crname/:vidname"
     const url =
-      "http://localhost:8000/get/notes/" +
+      "/get/notes/" +
       props.userName +
       "/" +
       props.crname +
@@ -22,7 +22,7 @@ function Note(props) {
       props.foundername;
 
     const viewURL =
-      "http://localhost:8000/views/" +
+      "/views/" +
       props.userName +
       "/" +
       props.crname +
@@ -45,7 +45,7 @@ function Note(props) {
       console.log(response.data);
       setNoteContent(response.data);
 
-      const viewResponse=await axios.post(viewURL,backObj);
+      const viewResponse = await axios.post(viewURL, backObj);
     } catch (err) {
       console.log(err);
     }
@@ -68,7 +68,7 @@ function Note(props) {
       foundername: props.foundername,
     };
     const url =
-      "http://localhost:8000/save/notes/" +
+      "/save/notes/" +
       props.userName +
       "/" +
       props.crname +

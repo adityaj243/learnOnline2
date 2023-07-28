@@ -17,8 +17,8 @@ function Update() {
   const backObj = {
     username: username,
   };
-  const url = "http://localhost:8000/update/" + username;
-  // const url = "http://localhost:8000" + location.pathname;
+  const url = "/update/" + username;
+  // const url = "" + location.pathname;
   // const username = location.pathname.slice(8);
   const [courses, setCourses] = useState([]);
 
@@ -27,15 +27,11 @@ function Update() {
       urlUsername: username,
     };
     try {
-      const response = await axios.post(
-        "http://localhost:8000/islogged",
-        logginObj,
-        {
-          headers: {
-            "x-access-token": localStorage.getItem("token"),
-          },
-        }
-      );
+      const response = await axios.post("/islogged", logginObj, {
+        headers: {
+          "x-access-token": localStorage.getItem("token"),
+        },
+      });
       if (!response.data.auth) {
         history.push("/");
       }

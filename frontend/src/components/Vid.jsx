@@ -20,7 +20,7 @@ function Vid(props) {
           // src="https://www.youtube.com/embed/qARXCXvQXKY?autoplay=1"
           // src="/Videos/tut2.mp4?autoplay=1"
           // src="https://docs.google.com/file/d/1wcqOsB01Oy2D1jSFMZcNVdbu9NcTZIrE/preview?autoplay=1&mute=1&enablejsapi=1"
-          src={"http://localhost:8000" + props.link}
+          src={"" + props.link}
         ></iframe>
       </div>
 

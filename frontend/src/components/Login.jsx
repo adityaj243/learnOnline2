@@ -7,12 +7,12 @@ function Login() {
   const history = useHistory();
   const [registerContent, setRegisterContent] = useState({
     username: "",
-    password: "", 
+    password: "",
   });
 
   async function isLoggedUserAuth() {
     try {
-      const response = await axios.get("http://localhost:8000/isUserAuth", {
+      const response = await axios.get("/isUserAuth", {
         headers: {
           "x-access-token": localStorage.getItem("token"),
         },
@@ -34,10 +34,7 @@ function Login() {
   async function handleClick(event) {
     event.preventDefault();
     try {
-      const result = await axios.post(
-        "http://localhost:8000/login",
-        registerContent
-      );
+      const result = await axios.post("/login", registerContent);
       console.log(result.data);
       if (!result.data.auth) {
         alert("PLEASE REGISTER FIRST !");

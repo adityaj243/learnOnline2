@@ -24,15 +24,11 @@ function MyContentSlideshow() {
       urlUsername: userName,
     };
     try {
-      const response = await axios.post(
-        "http://localhost:8000/islogged",
-        logginObj,
-        {
-          headers: {
-            "x-access-token": localStorage.getItem("token"),
-          },
-        }
-      );
+      const response = await axios.post("/islogged", logginObj, {
+        headers: {
+          "x-access-token": localStorage.getItem("token"),
+        },
+      });
       if (!response.data.auth) {
         history.push("/");
       }
@@ -44,7 +40,7 @@ function MyContentSlideshow() {
   async function deleteScreenshot(path, exactPath) {
     // /delete/screenshot/:username/:crname/founder/:foundername
     const deleteSSurl =
-      "http://localhost:8000/delete/screenshot/" +
+      "/delete/screenshot/" +
       userName +
       "/" +
       crname +
@@ -71,7 +67,7 @@ function MyContentSlideshow() {
 
   async function getScreenshots() {
     const url =
-      "http://localhost:8000/mycontent/screenshots/" +
+      "/mycontent/screenshots/" +
       userName +
       "/" +
       crname +

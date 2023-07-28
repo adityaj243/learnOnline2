@@ -12,7 +12,7 @@ function MyContent() {
   const backObj = {
     username: username,
   };
-  const url = "http://localhost:8000/mycontent/" + username;
+  const url = "/mycontent/" + username;
 
   const [courses, setCourses] = useState([]);
 
@@ -21,15 +21,11 @@ function MyContent() {
       urlUsername: username,
     };
     try {
-      const response = await axios.post(
-        "http://localhost:8000/islogged",
-        logginObj,
-        {
-          headers: {
-            "x-access-token": localStorage.getItem("token"),
-          },
-        }
-      );
+      const response = await axios.post("/islogged", logginObj, {
+        headers: {
+          "x-access-token": localStorage.getItem("token"),
+        },
+      });
       if (!response.data.auth) {
         history.push("/");
       }

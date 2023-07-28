@@ -12,10 +12,7 @@ function UpdateCard(props) {
 
   async function deleteCourse() {
     const deleteURL =
-      "http://localhost:8000/update/delete/course/" +
-      props.myUser +
-      "/" +
-      props.nameOfCourse;
+      "/update/delete/course/" + props.myUser + "/" + props.nameOfCourse;
     const courseObj = {
       username: props.myUser,
       coursename: props.nameOfCourse,

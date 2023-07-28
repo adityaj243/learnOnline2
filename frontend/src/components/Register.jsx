@@ -13,10 +13,7 @@ function Register() {
   async function handleClick(event) {
     event.preventDefault();
     try {
-      const result = await axios.post(
-        "http://localhost:8000/register",
-        registerContent
-      );
+      const result = await axios.post("/register", registerContent);
       if (result.data === "Username already exist") {
         alert("Username already exist");
       } else {
